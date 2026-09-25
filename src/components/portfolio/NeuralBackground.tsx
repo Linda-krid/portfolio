@@ -52,6 +52,7 @@ export function NeuralBackground() {
 
       for (let i = 0; i < nodes.length; i++) {
         const a = nodes[i];
+        if (!a) continue;
         const dxp = a.x - pointer.x;
         const dyp = a.y - pointer.y;
         const near = Math.sqrt(dxp * dxp + dyp * dyp) < 130;
@@ -63,6 +64,7 @@ export function NeuralBackground() {
 
         for (let j = i + 1; j < nodes.length; j++) {
           const b = nodes[j];
+          if (!b) continue;
           const dx = a.x - b.x;
           const dy = a.y - b.y;
           const dist = Math.sqrt(dx * dx + dy * dy);

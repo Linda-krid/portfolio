@@ -1,24 +1,51 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Nav } from "@/components/portfolio/Nav";
+import { Hero } from "@/components/portfolio/Hero";
+import {
+  APropos,
+  Certifications,
+  Competences,
+  Experiences,
+  Formation,
+  LanguesEtAssociatif,
+  Projets,
+} from "@/components/portfolio/Sections";
+import { Contact, Footer } from "@/components/portfolio/Contact";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const TITRE = "Linda KRID | Intelligence Artificielle & Génie Logiciel";
+const DESCRIPTION =
+  "Portfolio de Linda KRID, étudiante ingénieure en Génie Logiciel et Informatique Décisionnelle, spécialisée en Intelligence Artificielle, IA générative, LLMs, Machine Learning et développement logiciel.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: TITRE },
+      { name: "description", content: DESCRIPTION },
+      { property: "og:title", content: TITRE },
+      { property: "og:description", content: DESCRIPTION },
+      { property: "og:type", content: "profile" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background">
+      <Nav />
+      <main>
+        <Hero />
+        <APropos />
+        <Experiences />
+        <Projets />
+        <Competences />
+        <Formation />
+        <Certifications />
+        <LanguesEtAssociatif />
+        <Contact />
+      </main>
+      <Footer />
     </div>
   );
 }

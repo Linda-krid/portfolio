@@ -3,11 +3,11 @@ import { useCallback, useEffect, useState } from "react";
 export type Theme = "dark" | "light";
 
 export function useTheme() {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
     const stored = window.localStorage.getItem("theme-portfolio") as Theme | null;
-    setTheme(stored === "light" ? "light" : "dark");
+    setTheme(stored === "dark" ? "dark" : "light");
   }, []);
 
   useEffect(() => {

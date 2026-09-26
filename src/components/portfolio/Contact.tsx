@@ -1,118 +1,98 @@
-import { useState, type FormEvent } from "react";
-import { CheckCircle2, Github, Linkedin, Mail, MapPin, Send } from "lucide-react";
+import type { ReactNode } from "react";
+import { ArrowUpRight, Github, Linkedin, Mail, MapPin } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { IconLink } from "./Nav";
 import { profil, reseaux, PLACEHOLDER_URL } from "@/data/portfolio";
 
+const linkedinActif = reseaux.linkedin !== PLACEHOLDER_URL;
+const githubActif = reseaux.github !== PLACEHOLDER_URL;
+
 export function Contact() {
-  const [envoye, setEnvoye] = useState(false);
-
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const objet = encodeURIComponent(String(data.get("objet") ?? ""));
-    const corps = encodeURIComponent(
-      `Nom : ${data.get("nom")}\nEmail : ${data.get("email")}\n\n${data.get("message")}`,
-    );
-    window.location.href = `mailto:${profil.email}?subject=${objet}&body=${corps}`;
-    setEnvoye(true);
-  };
-
   return (
-    <section id="contact" className="relative py-24">
+    <section id="contact" className="relative overflow-hidden py-24 sm:py-28">
       <div className="absolute inset-0 -z-10 halo opacity-70" />
-      <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[1fr_1fr]">
+      <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
         <Reveal>
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary">Contact</p>
-          <h2 className="mt-4 text-3xl leading-tight font-semibold sm:text-4xl lg:text-5xl">
+          <h2 className="mx-auto mt-4 max-w-3xl text-3xl leading-tight font-semibold sm:text-4xl lg:text-5xl">
             Construisons quelque chose d’<span className="text-gradient">intelligent</span>{" "}
             ensemble.
           </h2>
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground">
             Je suis actuellement à la recherche d’un stage de fin d’études (PFE) et ouverte aux
             opportunités dans les domaines de l’Intelligence Artificielle, de l’IA générative, du
             Machine Learning et du Génie Logiciel.
           </p>
+        </Reveal>
 
-          <dl className="mt-8 space-y-4 text-sm">
-            <div className="flex items-center gap-3">
-              <Mail className="size-4 text-primary" aria-hidden="true" />
-              <dt className="sr-only">Email</dt>
-              <dd>
-                <a href={`mailto:${profil.email}`} className="hover:text-primary">
-                  {profil.email}
-                </a>
-              </dd>
-            </div>
-            <div className="flex items-center gap-3">
-              <MapPin className="size-4 text-primary" aria-hidden="true" />
-              <dt className="sr-only">Localisation</dt>
-              <dd>{profil.localisation}</dd>
-            </div>
-          </dl>
+        <Reveal delay={100}>
+          <ul className="mx-auto mt-12 grid max-w-3xl gap-3 text-left sm:grid-cols-2">
+            <CarteContact
+              icone={<Mail className="size-5" />}
+              label="Email"
+              valeur={profil.email}
+              href={`mailto:${profil.email}`}
+            />
+            <CarteContact
+              icone={<MapPin className="size-5" />}
+              label="Localisation"
+              valeur={profil.localisation}
+            />
+            <CarteContact
+              icone={<Linkedin className="size-5" />}
+              label="LinkedIn"
+              valeur="Profil LinkedIn"
+              href={linkedinActif ? reseaux.linkedin : undefined}
+              externe
+            />
+            <CarteContact
+              icone={<Github className="size-5" />}
+              label="GitHub"
+              valeur="Profil GitHub"
+              href={githubActif ? reseaux.github : undefined}
+              externe
+            />
+          </ul>
 
-          <div className="mt-6 flex items-center gap-2">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href={`mailto:${profil.email}`}
+              className="animated-gradient inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:-translate-y-0.5"
+            >
+              <Mail className="size-4" />
+              Me contacter par email
+            </a>
+            {linkedinActif ? (
+              <a
+                href={reseaux.linkedin}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="inline-flex items-center gap-2 rounded-full border border-border px-7 py-3.5 text-sm font-semibold transition-colors hover:border-primary/60 hover:bg-accent"
+              >
+                <Linkedin className="size-4" />
+                Voir mon LinkedIn
+              </a>
+            ) : (
+              <span
+                aria-disabled="true"
+                className="inline-flex cursor-not-allowed items-center gap-2 rounded-full border border-border px-7 py-3.5 text-sm font-semibold text-muted-foreground/70"
+              >
+                <Linkedin className="size-4" />
+                Voir mon LinkedIn
+              </span>
+            )}
+          </div>
+
+          <div className="mt-12 flex items-center justify-center gap-2">
             <IconLink href={reseaux.linkedin} label="LinkedIn">
               <Linkedin className="size-4" />
             </IconLink>
             <IconLink href={reseaux.github} label="GitHub">
               <Github className="size-4" />
             </IconLink>
-          </div>
-          {reseaux.linkedin === PLACEHOLDER_URL ? (
-            <p className="mt-4 text-xs text-muted-foreground">
-              Les liens LinkedIn et GitHub sont des emplacements temporaires : communiquez-moi vos
-              adresses exactes pour les activer.
-            </p>
-          ) : null}
-        </Reveal>
-
-        <Reveal delay={100}>
-          <div className="glass-panel rounded-3xl p-6 shadow-card sm:p-8">
-            {envoye ? (
-              <div className="grid min-h-80 place-items-center text-center">
-                <div>
-                  <CheckCircle2 className="mx-auto size-12 text-cyan" aria-hidden="true" />
-                  <h3 className="mt-4 text-xl font-semibold">Merci pour votre message</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    Votre logiciel de messagerie s’ouvre avec le message pré-rempli. Vous pouvez
-                    aussi m’écrire directement à {profil.email}.
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() => setEnvoye(false)}
-                    className="mt-6 rounded-full border border-border px-5 py-2 text-sm font-medium hover:bg-accent"
-                  >
-                    Écrire un autre message
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <form onSubmit={onSubmit} className="grid gap-4">
-                <Champ label="Nom" name="nom" autoComplete="name" />
-                <Champ label="Email" name="email" type="email" autoComplete="email" />
-                <Champ label="Objet" name="objet" />
-                <div className="grid gap-2">
-                  <label htmlFor="message" className="text-sm font-medium">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    required
-                    className="rounded-xl border border-input bg-surface px-4 py-3 text-sm outline-none transition-colors focus:border-primary"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="animated-gradient mt-2 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:-translate-y-0.5"
-                >
-                  <Send className="size-4" />
-                  Envoyer le message
-                </button>
-              </form>
-            )}
+            <IconLink href={`mailto:${profil.email}`} label="Email">
+              <Mail className="size-4" />
+            </IconLink>
           </div>
         </Reveal>
       </div>
@@ -120,31 +100,53 @@ export function Contact() {
   );
 }
 
-function Champ({
+function CarteContact({
+  icone,
   label,
-  name,
-  type = "text",
-  autoComplete,
+  valeur,
+  href,
+  externe = false,
 }: {
+  icone: ReactNode;
   label: string;
-  name: string;
-  type?: string;
-  autoComplete?: string;
+  valeur: string;
+  href?: string | undefined;
+  externe?: boolean;
 }) {
+  const base =
+    "group flex items-center gap-4 rounded-2xl border border-border bg-surface p-4 text-left shadow-card";
+
+  const contenu = (
+    <>
+      <span className="grid size-11 shrink-0 place-items-center rounded-xl border border-border bg-surface-elevated text-primary transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-primary/50 group-hover:bg-primary/10">
+        {icone}
+      </span>
+      <span className="min-w-0">
+        <span className="block text-sm font-medium">{label}</span>
+        <span className="mt-0.5 block truncate text-sm text-muted-foreground">{valeur}</span>
+      </span>
+      {href && externe ? (
+        <ArrowUpRight className="ml-auto size-4 shrink-0 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
+      ) : null}
+    </>
+  );
+
   return (
-    <div className="grid gap-2">
-      <label htmlFor={name} className="text-sm font-medium">
-        {label}
-      </label>
-      <input
-        id={name}
-        name={name}
-        type={type}
-        required
-        autoComplete={autoComplete}
-        className="rounded-xl border border-input bg-surface px-4 py-3 text-sm outline-none transition-colors focus:border-primary"
-      />
-    </div>
+    <li>
+      {href ? (
+        <a
+          href={href}
+          {...(externe ? { target: "_blank", rel: "noreferrer noopener" } : {})}
+          className={`${base} card-hover`}
+        >
+          {contenu}
+        </a>
+      ) : (
+        <div aria-disabled="true" className={`${base} cursor-default opacity-75`}>
+          {contenu}
+        </div>
+      )}
+    </li>
   );
 }
 

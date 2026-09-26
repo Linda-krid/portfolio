@@ -128,14 +128,24 @@ export function IconLink({
   label: string;
   children: React.ReactNode;
 }) {
-  const placeholder = href === PLACEHOLDER_URL;
+  if (href === PLACEHOLDER_URL) {
+    return (
+      <span
+        aria-label={label}
+        title={`${label} — lien à ajouter`}
+        className="grid size-9 cursor-default place-items-center rounded-full border border-border text-muted-foreground/50"
+      >
+        {children}
+      </span>
+    );
+  }
   return (
     <a
       href={href}
-      aria-label={placeholder ? `${label} — lien à ajouter` : label}
-      title={placeholder ? `${label} — lien à ajouter` : label}
-      target={placeholder ? undefined : "_blank"}
-      rel={placeholder ? undefined : "noreferrer noopener"}
+      aria-label={label}
+      title={label}
+      target="_blank"
+      rel="noreferrer noopener"
       className="grid size-9 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary/60 hover:text-foreground"
     >
       {children}

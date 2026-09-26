@@ -4,7 +4,7 @@ export const profil = {
   nom: "Linda KRID",
   titre: "Élève ingénieure en Génie Logiciel & Intelligence Artificielle",
   localisation: "Troyes, France",
-  email: "krid.linda18@gmail.com",
+  email: "lindakrid18@gmail.com",
   cv: "/cv-linda-krid.pdf",
   introduction:
     "Étudiante en 3ème année du cycle ingénieur en Génie Logiciel et Informatique Décisionnelle, passionnée par l’Intelligence Artificielle et le développement de solutions logicielles intelligentes.",

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { ArrowDown, Download, Github, Linkedin, Mail, User } from "lucide-react";
+import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react";
 import { NeuralBackground } from "./NeuralBackground";
 import { IconLink } from "./Nav";
 import { profil, reseaux, rotationMetiers } from "@/data/portfolio";
+import portrait from "@/assets/linda-portrait.webp.asset.json";
 
 function useRotation(mots: string[]) {
   const [index, setIndex] = useState(0);
@@ -24,7 +25,7 @@ export function Hero() {
         <NeuralBackground />
       </div>
 
-      <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-[1.35fr_1fr]">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1.35fr_1fr] lg:gap-14">
         <div>
           <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-xs font-medium tracking-wide">
             <span className="size-2 rounded-full bg-cyan pulse-dot" />
@@ -89,19 +90,18 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-sm">
-          <div className="animated-gradient absolute -inset-3 rounded-[2rem] opacity-25 blur-2xl" />
-          <div className="glass-panel relative overflow-hidden rounded-[1.75rem] p-3">
-            <div className="grid aspect-[4/5] place-items-center rounded-2xl border border-dashed border-border bg-surface-elevated text-center">
-              <div className="px-6">
-                <User className="mx-auto size-12 text-muted-foreground" aria-hidden="true" />
-                <p className="mt-4 text-sm font-medium">Emplacement pour votre photo</p>
-                <p className="mt-2 text-xs text-muted-foreground">
-                  Ajoutez votre photo professionnelle dans le dossier des images du site
-                  (public/images/photo-linda.jpg) pour remplacer cet emplacement.
-                </p>
-              </div>
-            </div>
+        <div className="relative mx-auto w-full max-w-[260px] sm:max-w-[320px] lg:max-w-sm motion-safe:animate-in motion-safe:fade-in motion-safe:duration-700">
+          <div className="animated-gradient absolute -inset-2 rounded-[2rem] opacity-20 blur-xl" aria-hidden="true" />
+          <div className="glass-panel relative overflow-hidden rounded-[1.75rem] p-2 shadow-card sm:p-3">
+            <img
+              src={portrait.url}
+              alt="Portrait professionnel de Linda KRID"
+              width={900}
+              height={1125}
+              fetchPriority="high"
+              decoding="async"
+              className="aspect-[4/5] w-full rounded-2xl object-cover object-center transition-transform duration-500 motion-safe:hover:scale-[1.01]"
+            />
             <dl className="grid grid-cols-2 gap-3 px-2 py-4 text-xs">
               <div>
                 <dt className="text-muted-foreground">Localisation</dt>

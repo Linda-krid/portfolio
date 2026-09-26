@@ -110,7 +110,7 @@ function CarteContact({
   icone: ReactNode;
   label: string;
   valeur: string;
-  href?: string;
+  href?: string | undefined;
   externe?: boolean;
 }) {
   const base =

@@ -16,8 +16,8 @@ export const profil = {
 };
 
 export const reseaux = {
-  linkedin: PLACEHOLDER_URL,
-  github: PLACEHOLDER_URL,
+  linkedin: "https://www.linkedin.com/in/linda-krid",
+  github: "https://github.com/Linda-krid",
 };
 
 export const rotationMetiers = [
@@ -151,7 +151,7 @@ export const projets: Projet[] = [
     id: "pipeline-web",
     numero: "03",
     categorie: "IA • Automatisation",
-    titre: "Pipeline intelligent de données web",
+    titre: "Pipeline intelligent de traitement des données web",
     description:
       "Pipeline intelligent permettant d’automatiser l’extraction et l’analyse des données web.",
     fonctionnalites: ["Extraction automatisée des données web", "Analyse assistée par LLM"],

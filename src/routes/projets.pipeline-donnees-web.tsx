@@ -99,8 +99,8 @@ function PipelinePage() {
             <>
               <p>
                 Dans un environnement concurrentiel, les entreprises ont besoin d’informations
-                fiables et actualisées sur leurs partenaires potentiels, concurrents et
-                opportunités commerciales.
+                fiables et actualisées sur leurs partenaires potentiels, concurrents et opportunités
+                commerciales.
               </p>
               <p>
                 La recherche manuelle de ces informations à travers des moteurs de recherche et
@@ -153,7 +153,8 @@ function PipelinePage() {
             items={[
               {
                 titre: "Collecter",
-                texte: "Extraire automatiquement des informations sur les entreprises à partir du web.",
+                texte:
+                  "Extraire automatiquement des informations sur les entreprises à partir du web.",
               },
               {
                 titre: "Filtrer",
@@ -161,11 +162,13 @@ function PipelinePage() {
               },
               {
                 titre: "Nettoyer",
-                texte: "Supprimer les doublons, gérer les encodages et normaliser les informations.",
+                texte:
+                  "Supprimer les doublons, gérer les encodages et normaliser les informations.",
               },
               {
                 titre: "Structurer",
-                texte: "Transformer les données extraites en informations cohérentes et exploitables.",
+                texte:
+                  "Transformer les données extraites en informations cohérentes et exploitables.",
               },
               {
                 titre: "Automatiser",
@@ -182,13 +185,23 @@ function PipelinePage() {
         <Section
           titre="Pipeline de collecte et de traitement"
           eyebrow="Cœur technique"
-          intro={<p>De la requête initiale jusqu’au fichier Excel final, chaque étape est automatisée.</p>}
+          intro={
+            <p>
+              De la requête initiale jusqu’au fichier Excel final, chaque étape est automatisée.
+            </p>
+          }
         >
           <Flow
             steps={[
               { titre: "Requête utilisateur", texte: "Définition des critères de recherche." },
-              { titre: "Recherche Google avec SerpAPI", texte: "Obtention de résultats structurés." },
-              { titre: "Récupération des sites web", texte: "Constitution de la liste des sources." },
+              {
+                titre: "Recherche Google avec SerpAPI",
+                texte: "Obtention de résultats structurés.",
+              },
+              {
+                titre: "Récupération des sites web",
+                texte: "Constitution de la liste des sources.",
+              },
               { titre: "Scraping HTML", texte: "Extraction du contenu des pages." },
               {
                 titre: "Identification des pages pertinentes",
@@ -200,7 +213,10 @@ function PipelinePage() {
                 texte: "Interprétation sémantique du contenu extrait.",
               },
               { titre: "Structuration JSON", texte: "Production d’une sortie homogène." },
-              { titre: "Fusion des données", texte: "Consolidation des informations par entreprise." },
+              {
+                titre: "Fusion des données",
+                texte: "Consolidation des informations par entreprise.",
+              },
               { titre: "Export Excel", texte: "Génération du fichier final exploitable." },
             ]}
           />
@@ -383,20 +399,27 @@ function PipelinePage() {
             items={[
               {
                 titre: "Python",
-                texte: "Développement des scripts de collecte, traitement et manipulation des données.",
+                texte:
+                  "Développement des scripts de collecte, traitement et manipulation des données.",
               },
               {
                 titre: "BeautifulSoup",
                 texte: "Parsing et extraction des informations depuis les pages HTML.",
               },
-              { titre: "Selenium", texte: "Chargement et interaction avec les pages web dynamiques." },
+              {
+                titre: "Selenium",
+                texte: "Chargement et interaction avec les pages web dynamiques.",
+              },
               { titre: "SerpAPI", texte: "Automatisation des recherches Google." },
               {
                 titre: "n8n",
                 texte: "Orchestration complète du workflow.",
                 icone: <Workflow className="size-5" />,
               },
-              { titre: "LM Studio / LLM", texte: "Analyse, classification et structuration des données." },
+              {
+                titre: "LM Studio / LLM",
+                texte: "Analyse, classification et structuration des données.",
+              },
               { titre: "Pandas", texte: "Nettoyage et organisation des données." },
               {
                 titre: "Excel",
@@ -418,15 +441,13 @@ function PipelinePage() {
               },
               {
                 titre: "Sites dynamiques",
-                defi:
-                  "Certaines données sont générées uniquement après exécution de JavaScript.",
+                defi: "Certaines données sont générées uniquement après exécution de JavaScript.",
                 solution: "Utilisation de Selenium pour charger le contenu dynamique.",
               },
               {
                 titre: "Données bruitées",
                 defi: "Présence de doublons, d’informations inutiles et de caractères spéciaux.",
-                solution:
-                  "Pipeline de nettoyage, normalisation UTF-8 et traitement avec Pandas.",
+                solution: "Pipeline de nettoyage, normalisation UTF-8 et traitement avec Pandas.",
               },
               {
                 titre: "Informations difficiles à identifier",
@@ -435,8 +456,7 @@ function PipelinePage() {
               },
               {
                 titre: "Restrictions d’accès",
-                defi:
-                  "CAPTCHA, Cloudflare ou limitations d’IP peuvent empêcher certaines extractions.",
+                defi: "CAPTCHA, Cloudflare ou limitations d’IP peuvent empêcher certaines extractions.",
                 solution:
                   "Utilisation de SerpAPI pour la recherche et mécanismes de gestion des erreurs.",
               },
@@ -557,7 +577,7 @@ function PipelinePage() {
 
         <NavigationProjets
           precedent={{ label: "CarbonAI", to: "/projets/carbonai" }}
-          suivant={{ label: "OptiSense", to: "/projets/optisense" }}
+          suivant={{ label: "SmartScan", to: "/projets/smartscan" }}
         />
       </main>
       <Footer />

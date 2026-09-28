@@ -74,9 +74,7 @@ export function CaseHero({
         <Reveal>
           <p className="font-mono text-xs uppercase tracking-[0.28em] text-primary">{categorie}</p>
           <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">{titre}</h1>
-          {sousTitre ? (
-            <p className="mt-3 text-lg font-medium text-cyan">{sousTitre}</p>
-          ) : null}
+          {sousTitre ? <p className="mt-3 text-lg font-medium text-cyan">{sousTitre}</p> : null}
           <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
             {accroche}
           </p>
@@ -364,7 +362,16 @@ export function Galerie({
 
 /* ----------------------------------------------------------- navigation */
 
-type Lien = { label: string; to: "/projets/optisense" | "/projets/carbonai" | "/projets/pipeline-donnees-web" };
+export type Lien = {
+  label: string;
+  to:
+    | "/projets/optisense"
+    | "/projets/carbonai"
+    | "/projets/pipeline-donnees-web"
+    | "/projets/smartscan"
+    | "/projets/data-mining-project"
+    | "/projets/gestion-projets";
+};
 
 export function NavigationProjets({ precedent, suivant }: { precedent?: Lien; suivant?: Lien }) {
   return (
@@ -408,7 +415,12 @@ export function NavigationProjets({ precedent, suivant }: { precedent?: Lien; su
 
 export function IllustrationConversation() {
   return (
-    <svg viewBox="0 0 420 320" className="w-full" role="img" aria-label="Conversations analysées par l’intelligence artificielle">
+    <svg
+      viewBox="0 0 420 320"
+      className="w-full"
+      role="img"
+      aria-label="Conversations analysées par l’intelligence artificielle"
+    >
       <defs>
         <linearGradient id="opti-g" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor="oklch(0.62 0.17 258)" stopOpacity="0.16" />
@@ -416,19 +428,58 @@ export function IllustrationConversation() {
         </linearGradient>
       </defs>
       <rect x="10" y="10" width="400" height="300" rx="26" fill="url(#opti-g)" />
-      <rect x="44" y="56" width="180" height="34" rx="17" className="fill-card stroke-border" strokeWidth="1.2" />
-      <rect x="196" y="106" width="180" height="34" rx="17" className="fill-card stroke-border" strokeWidth="1.2" />
-      <rect x="44" y="156" width="150" height="34" rx="17" className="fill-card stroke-border" strokeWidth="1.2" />
+      <rect
+        x="44"
+        y="56"
+        width="180"
+        height="34"
+        rx="17"
+        className="fill-card stroke-border"
+        strokeWidth="1.2"
+      />
+      <rect
+        x="196"
+        y="106"
+        width="180"
+        height="34"
+        rx="17"
+        className="fill-card stroke-border"
+        strokeWidth="1.2"
+      />
+      <rect
+        x="44"
+        y="156"
+        width="150"
+        height="34"
+        rx="17"
+        className="fill-card stroke-border"
+        strokeWidth="1.2"
+      />
       <circle cx="210" cy="246" r="34" className="fill-card stroke-border" strokeWidth="1.2" />
-      <path d="M196 246h28M210 232v28" stroke="oklch(0.62 0.17 258)" strokeWidth="2" strokeLinecap="round" />
-      <path d="M134 190v30M210 190v22" stroke="oklch(0.72 0.13 210)" strokeWidth="1.5" strokeDasharray="4 5" />
+      <path
+        d="M196 246h28M210 232v28"
+        stroke="oklch(0.62 0.17 258)"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <path
+        d="M134 190v30M210 190v22"
+        stroke="oklch(0.72 0.13 210)"
+        strokeWidth="1.5"
+        strokeDasharray="4 5"
+      />
     </svg>
   );
 }
 
 export function IllustrationCarbone() {
   return (
-    <svg viewBox="0 0 420 320" className="w-full" role="img" aria-label="Données d’activité converties en empreinte carbone">
+    <svg
+      viewBox="0 0 420 320"
+      className="w-full"
+      role="img"
+      aria-label="Données d’activité converties en empreinte carbone"
+    >
       <defs>
         <linearGradient id="carb-g" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor="oklch(0.72 0.13 210)" stopOpacity="0.16" />
@@ -462,7 +513,12 @@ export function IllustrationCarbone() {
 
 export function IllustrationPipeline() {
   return (
-    <svg viewBox="0 0 420 320" className="w-full" role="img" aria-label="Du web aux données structurées">
+    <svg
+      viewBox="0 0 420 320"
+      className="w-full"
+      role="img"
+      aria-label="Du web aux données structurées"
+    >
       <defs>
         <linearGradient id="pipe-g" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor="oklch(0.62 0.17 258)" stopOpacity="0.14" />
@@ -478,8 +534,21 @@ export function IllustrationPipeline() {
         strokeWidth="1.5"
       />
       <path d="M146 160h58" stroke="oklch(0.72 0.13 210)" strokeWidth="2" strokeDasharray="5 6" />
-      <rect x="210" y="124" width="72" height="72" rx="18" className="fill-card stroke-border" strokeWidth="1.2" />
-      <path d="M228 160h36M246 142v36" stroke="oklch(0.68 0.16 300)" strokeWidth="2" strokeLinecap="round" />
+      <rect
+        x="210"
+        y="124"
+        width="72"
+        height="72"
+        rx="18"
+        className="fill-card stroke-border"
+        strokeWidth="1.2"
+      />
+      <path
+        d="M228 160h36M246 142v36"
+        stroke="oklch(0.68 0.16 300)"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
       <path d="M290 160h24" stroke="oklch(0.72 0.13 210)" strokeWidth="2" strokeDasharray="5 6" />
       {[0, 1, 2].map((i) => (
         <rect

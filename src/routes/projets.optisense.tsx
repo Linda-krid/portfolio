@@ -58,7 +58,7 @@ function OptiSensePage() {
       <main>
         <CaseHero
           titre="OptiSense"
-          sousTitre="Analyse intelligente des conversations du centre d’appel EssilorLuxottica"
+          sousTitre="Analyse intelligente des conversations d’un centre d’appel spécialisé"
           categorie="Intelligence Artificielle • LLM • NLP • RAG"
           type="Projet de Fin d’Année (PFA) — IIT"
           periode="Juin 2026"
@@ -84,8 +84,7 @@ function OptiSensePage() {
             <>
               <p>
                 OptiSense est une plateforme intelligente conçue pour automatiser l’analyse des
-                conversations entre les agents du centre d’appel EssilorLuxottica et les opticiens
-                partenaires.
+                conversations entre les agents d’un centre d’appel spécialisé et ses partenaires.
               </p>
               <p>
                 La solution transforme les conversations en informations structurées afin d’évaluer
@@ -153,8 +152,7 @@ function OptiSensePage() {
                 },
                 {
                   titre: "Évaluation potentiellement subjective",
-                  texte:
-                    "Deux évaluateurs peuvent interpréter différemment une même conversation.",
+                  texte: "Deux évaluateurs peuvent interpréter différemment une même conversation.",
                 },
                 {
                   titre: "Informations difficiles à détecter",
@@ -169,10 +167,14 @@ function OptiSensePage() {
         <Section titre="Objectifs du projet">
           <Cards
             items={[
-              { titre: "Analyser", texte: "Comprendre automatiquement le contenu des conversations." },
+              {
+                titre: "Analyser",
+                texte: "Comprendre automatiquement le contenu des conversations.",
+              },
               {
                 titre: "Évaluer",
-                texte: "Évaluer la qualité de la prise en charge selon une grille métier structurée.",
+                texte:
+                  "Évaluer la qualité de la prise en charge selon une grille métier structurée.",
               },
               {
                 titre: "Détecter",
@@ -180,7 +182,8 @@ function OptiSensePage() {
               },
               {
                 titre: "Mesurer",
-                texte: "Calculer des scores et indicateurs permettant de suivre la qualité du service.",
+                texte:
+                  "Calculer des scores et indicateurs permettant de suivre la qualité du service.",
               },
               {
                 titre: "Aider à la décision",
@@ -242,8 +245,8 @@ function OptiSensePage() {
           eyebrow="Cœur technique"
           intro={
             <p>
-              Chaque conversation traverse une chaîne de traitement complète, du texte brut jusqu’aux
-              scores exploitables.
+              Chaque conversation traverse une chaîne de traitement complète, du texte brut
+              jusqu’aux scores exploitables.
             </p>
           }
         >
@@ -402,7 +405,14 @@ function OptiSensePage() {
             ]}
           />
           <div className="mt-6">
-            <Chain items={["Interface React", "HTTP / JWT", "Backend FastAPI", "PostgreSQL & Modules IA"]} />
+            <Chain
+              items={[
+                "Interface React",
+                "HTTP / JWT",
+                "Backend FastAPI",
+                "PostgreSQL & Modules IA",
+              ]}
+            />
           </div>
         </Section>
 
@@ -528,7 +538,9 @@ function OptiSensePage() {
                 <dl className="mt-4 space-y-3 text-sm text-muted-foreground">
                   <div>
                     <dt className="font-mono text-[11px] uppercase tracking-[0.18em]">Dataset</dt>
-                    <dd className="mt-1">3 062 exemples d’entraînement · 300 validation · 300 test</dd>
+                    <dd className="mt-1">
+                      3 062 exemples d’entraînement · 300 validation · 300 test
+                    </dd>
                   </div>
                   <div>
                     <dt className="font-mono text-[11px] uppercase tracking-[0.18em]">Métrique</dt>
@@ -546,7 +558,9 @@ function OptiSensePage() {
                     <dd className="mt-1">470 conversations annotées Q1–Q14</dd>
                   </div>
                   <div>
-                    <dt className="font-mono text-[11px] uppercase tracking-[0.18em]">Répartition</dt>
+                    <dt className="font-mono text-[11px] uppercase tracking-[0.18em]">
+                      Répartition
+                    </dt>
                     <dd className="mt-1">80 % entraînement · 10 % validation · 20 % test</dd>
                   </div>
                   <div>
@@ -600,7 +614,9 @@ function OptiSensePage() {
 
         <Section
           titre="Ma contribution"
-          intro={<p>Participation à la conception et à la réalisation de la plateforme OptiSense.</p>}
+          intro={
+            <p>Participation à la conception et à la réalisation de la plateforme OptiSense.</p>
+          }
         />
 
         <Section
@@ -630,6 +646,32 @@ function OptiSensePage() {
           />
         </Section>
 
+        <Section
+          titre="Démonstration"
+          eyebrow="Présentation vidéo"
+          intro={
+            <p>
+              Découvrez le fonctionnement d’OptiSense, depuis l’analyse d’une conversation jusqu’à
+              la consultation des résultats.
+            </p>
+          }
+        >
+          <figure className="overflow-hidden rounded-2xl border border-border bg-card shadow-card">
+            <video
+              className="aspect-video w-full bg-slate-950 object-cover"
+              controls
+              preload="metadata"
+              playsInline
+            >
+              <source src="/videos/optisense-demo.mp4" type="video/mp4" />
+              Votre navigateur ne prend pas en charge la lecture vidéo.
+            </video>
+            <figcaption className="border-t border-border px-5 py-4 text-sm text-muted-foreground">
+              Démonstration vidéo de la plateforme OptiSense.
+            </figcaption>
+          </figure>
+        </Section>
+
         <Galerie
           titre="Aperçu de l’application"
           captures={[
@@ -651,7 +693,8 @@ function OptiSensePage() {
             items={[
               {
                 titre: "Transcription automatique",
-                texte: "Intégration future de Whisper pour analyser directement les fichiers audio.",
+                texte:
+                  "Intégration future de Whisper pour analyser directement les fichiers audio.",
               },
               {
                 titre: "Détection précoce des risques",

@@ -2,7 +2,7 @@ export const PLACEHOLDER_URL = "#lien-a-completer";
 
 export const profil = {
   nom: "Linda KRID",
-  titre: "Élève ingénieure en Génie Logiciel & Intelligence Artificielle",
+  titre: "Élève ingénieure en Génie Logiciel & Informatique Décisionnelle",
   localisation: "Troyes, France",
   email: "lindakrid18@gmail.com",
   cv: "/cv-linda-krid.pdf",
@@ -25,7 +25,6 @@ export const rotationMetiers = [
   "IA Générative",
   "Large Language Models",
   "Machine Learning",
-  "Deep Learning",
   "Génie Logiciel",
   "Automatisation intelligente",
 ];
@@ -35,11 +34,20 @@ export const domaines = [
     titre: "Intelligence Artificielle",
     texte: "Conception de systèmes capables d’analyser, comprendre et décider.",
   },
-  { titre: "IA Générative", texte: "Génération de contenus, rapports et réponses contextualisées." },
+  {
+    titre: "IA Générative",
+    texte: "Génération de contenus, rapports et réponses contextualisées.",
+  },
   { titre: "LLMs & RAG", texte: "Recherche augmentée et exploitation de bases documentaires." },
   { titre: "Machine Learning", texte: "Modélisation, entraînement et évaluation de modèles." },
-  { titre: "Génie Logiciel", texte: "Applications web robustes, maintenables et bien architecturées." },
-  { titre: "Automatisation", texte: "Workflows intelligents pour fiabiliser les tâches répétitives." },
+  {
+    titre: "Génie Logiciel",
+    texte: "Applications web robustes, maintenables et bien architecturées.",
+  },
+  {
+    titre: "Automatisation",
+    texte: "Workflows intelligents pour fiabiliser les tâches répétitives.",
+  },
 ];
 
 export type Experience = {
@@ -68,7 +76,7 @@ export const experiences: Experience[] = [
     intitule: "Projet de Fin d’Année (PFA)",
     periode: "Juin 2026",
     projet: "OptiSense",
-    sousTitre: "Analyse intelligente des conversations du centre d’appel EssilorLuxottica",
+    sousTitre: "Analyse intelligente des conversations d’un centre d’appel spécialisé",
     description:
       "Développement d’une application web intégrant un chatbot conversationnel et une analyse automatique des conversations.",
     technologies: ["React", "FastAPI", "LLM", "RAG"],
@@ -86,6 +94,7 @@ export const experiences: Experience[] = [
 export type Projet = {
   id: string;
   numero: string;
+  type?: string;
   categorie: string;
   titre: string;
   description: string;
@@ -107,7 +116,7 @@ export const projets: Projet[] = [
     categorie: "IA Générative • LLM • RAG",
     titre: "OptiSense",
     description:
-      "Application web dédiée à l’analyse intelligente des conversations du centre d’appel EssilorLuxottica.",
+      "Application web dédiée à l’analyse intelligente des conversations d’un centre d’appel spécialisé.",
     fonctionnalites: [
       "Chatbot conversationnel",
       "Analyse automatique des conversations",
@@ -162,6 +171,111 @@ export const projets: Projet[] = [
     solution: A_COMPLETER,
     architecture: A_COMPLETER,
   },
+  {
+    id: "smartscan",
+    numero: "04",
+    type: "Projet académique",
+    categorie: "Mobile • IA • Computer Vision",
+    titre: "SmartScan",
+    description:
+      "Application mobile Flutter transformant la caméra du téléphone en assistant de reconnaissance intelligent.",
+    fonctionnalites: [
+      "Reconnaissance de texte par OCR",
+      "Lecture de QR codes et codes-barres",
+      "Détection d’objets et de visages",
+      "Historique des analyses",
+    ],
+    technologies: ["Flutter", "Dart", "Google ML Kit", "Firebase", "Provider"],
+    image: "/images/projet-optisense.jpg",
+    imageAlt: "Illustration claire d’une application mobile de reconnaissance intelligente",
+    problematique: A_COMPLETER,
+    solution: A_COMPLETER,
+    architecture: A_COMPLETER,
+  },
+  {
+    id: "data-mining-project",
+    numero: "05",
+    type: "Projet académique",
+    categorie: "Machine Learning • Data Science",
+    titre: "Data Mining Project",
+    description:
+      "Projet de data mining consacré à l’application et à la comparaison de modèles de Machine Learning sur un jeu de données d’assurance.",
+    fonctionnalites: [
+      "Préparation des données",
+      "Entraînement de plusieurs modèles",
+      "Comparaison des performances",
+      "Analyse des résultats",
+    ],
+    technologies: ["Python", "Pandas", "NumPy", "Scikit-learn", "Matplotlib", "Jupyter"],
+    image: "/images/projet-pipeline.jpg",
+    imageAlt: "Illustration claire d’un flux d’analyse de données",
+    problematique: A_COMPLETER,
+    solution: A_COMPLETER,
+    architecture: A_COMPLETER,
+  },
+  {
+    id: "gestion-projets",
+    numero: "06",
+    type: "Projet académique",
+    categorie: "Java • Jakarta EE • Gestion",
+    titre: "Gestion Projets",
+    description:
+      "Application web de gestion de projets permettant aux administrateurs de gérer les utilisateurs, les projets, les catégories et les affectations.",
+    fonctionnalites: [
+      "Authentification et gestion des rôles",
+      "Gestion des utilisateurs et projets",
+      "Gestion des catégories",
+      "Tableau de bord administrateur",
+    ],
+    technologies: ["Java 17", "Jakarta EE", "JSP", "JPA", "Hibernate", "MySQL", "Maven"],
+    image: "/images/projet-carbonai.jpg",
+    imageAlt: "Illustration claire d’une application de gestion de projets",
+    problematique: A_COMPLETER,
+    solution: A_COMPLETER,
+    architecture: A_COMPLETER,
+  },
+  {
+    id: "clinique-app",
+    numero: "07",
+    type: "Projet académique",
+    categorie: "Angular • Firebase • Gestion",
+    titre: "Clinique App",
+    description:
+      "Application web de gestion d’une clinique pour organiser les patients, les médecins, les rendez-vous et les ordonnances.",
+    fonctionnalites: [
+      "Authentification et inscription",
+      "Gestion des patients et médecins",
+      "Gestion des rendez-vous",
+      "Tableau de bord par rôle",
+    ],
+    technologies: ["Angular 21", "TypeScript", "Firebase", "AngularFire", "Bootstrap", "Chart.js"],
+    image: "/images/projet-carbonai.jpg",
+    imageAlt: "Illustration claire d’une application web de gestion de clinique",
+    problematique: A_COMPLETER,
+    solution: A_COMPLETER,
+    architecture: A_COMPLETER,
+  },
+  {
+    id: "event-planner",
+    numero: "08",
+    type: "Projet académique",
+    categorie: "Laravel • Gestion d’événements",
+    titre: "EventPlanner",
+    description:
+      "Application web permettant de consulter, créer et gérer des événements et les inscriptions des utilisateurs.",
+    fonctionnalites: [
+      "Consultation des événements publics",
+      "Création de compte et authentification",
+      "Inscription aux événements",
+      "Administration des catégories et événements",
+    ],
+    technologies: ["PHP 8.2", "Laravel 12", "SQLite", "Vite", "Tailwind CSS", "Node.js"],
+    image: "/images/projet-pipeline.jpg",
+    imageAlt: "Illustration claire d’une application de gestion d’événements",
+    problematique: A_COMPLETER,
+    solution: A_COMPLETER,
+    architecture: A_COMPLETER,
+  },
 ];
 
 export const competences = [
@@ -185,14 +299,14 @@ export const formations = [
     etablissement: "Université de Technologie de Troyes — UTT",
     lieu: "Troyes, France",
     periode: "2026 — Présent",
-    intitule: "Cycle d’Ingénieur en Génie Informatique",
+    intitule: "Cycle ingénieur — Génie Logiciel et Informatique Décisionnelle",
     actuel: true,
   },
   {
     etablissement: "Institut International de Technologie — IIT",
     lieu: "Sfax, Tunisie",
     periode: "2024 — 2026",
-    intitule: "Cycle d’Ingénieur en Génie Informatique",
+    intitule: "Cycle ingénieur — Génie Logiciel et Informatique Décisionnelle",
     actuel: false,
   },
   {
@@ -209,7 +323,7 @@ export const certifications = [
     titre: "EFE Certificate",
     sousTitre: "Green Business Model Canvas",
     annee: "2026",
-    description: "Certificate of Participation — Formation en Green Business Model Canvas",
+    description: "Certificat de participation — Formation Green Business Model Canvas",
   },
   {
     titre: "L’Agora des Projets",

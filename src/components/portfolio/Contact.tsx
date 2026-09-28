@@ -28,22 +28,9 @@ export function Contact() {
         <Reveal delay={100}>
           <ul className="mx-auto mt-12 grid max-w-3xl gap-3 text-left sm:grid-cols-2">
             <CarteContact
-              icone={<Mail className="size-5" />}
-              label="Email"
-              valeur={profil.email}
-              href={`mailto:${profil.email}`}
-            />
-            <CarteContact
               icone={<MapPin className="size-5" />}
               label="Localisation"
               valeur={profil.localisation}
-            />
-            <CarteContact
-              icone={<Linkedin className="size-5" />}
-              label="LinkedIn"
-              valeur="Profil LinkedIn"
-              href={linkedinActif ? reseaux.linkedin : undefined}
-              externe
             />
             <CarteContact
               icone={<Github className="size-5" />}

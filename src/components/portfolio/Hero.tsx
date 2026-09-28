@@ -3,7 +3,6 @@ import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react";
 import { NeuralBackground } from "./NeuralBackground";
 import { IconLink } from "./Nav";
 import { profil, reseaux, rotationMetiers } from "@/data/portfolio";
-import portrait from "@/assets/linda-portrait.webp.asset.json";
 
 function useRotation(mots: string[]) {
   const [index, setIndex] = useState(0);
@@ -35,12 +34,15 @@ export function Hero() {
           <p className="mt-7 text-lg text-muted-foreground">Bonjour, je suis Linda KRID</p>
           <h1 className="mt-3 text-4xl leading-[1.05] font-semibold sm:text-5xl lg:text-6xl">
             Élève ingénieure en <span className="text-gradient">Génie Logiciel</span> &amp;
-            <span className="text-gradient"> Intelligence Artificielle</span>
+            <span className="text-gradient"> Informatique Décisionnelle</span>
           </h1>
 
           <p className="mt-6 flex flex-wrap items-baseline gap-2 font-mono text-sm sm:text-base">
-            <span className="text-muted-foreground">Spécialisation —</span>
-            <span key={mot} className="text-cyan duration-500 animate-in fade-in slide-in-from-bottom-2">
+            <span className="text-muted-foreground">Orientation —</span>
+            <span
+              key={mot}
+              className="text-cyan duration-500 animate-in fade-in slide-in-from-bottom-2"
+            >
               {mot}
             </span>
           </p>
@@ -91,10 +93,13 @@ export function Hero() {
         </div>
 
         <div className="relative mx-auto w-full max-w-[260px] sm:max-w-[320px] lg:max-w-sm motion-safe:animate-in motion-safe:fade-in motion-safe:duration-700">
-          <div className="animated-gradient absolute -inset-2 rounded-[2rem] opacity-20 blur-xl" aria-hidden="true" />
+          <div
+            className="animated-gradient absolute -inset-2 rounded-[2rem] opacity-20 blur-xl"
+            aria-hidden="true"
+          />
           <div className="glass-panel relative overflow-hidden rounded-[1.75rem] p-2 shadow-card sm:p-3">
             <img
-              src={portrait.url}
+              src="/images/linda-portrait.webp"
               alt="Portrait professionnel de Linda KRID"
               width={900}
               height={1125}

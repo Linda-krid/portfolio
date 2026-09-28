@@ -11,8 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjetsCarbonaiRouteImport } from './routes/projets.carbonai'
+import { Route as ProjetsCliniqueAppRouteImport } from './routes/projets.clinique-app'
+import { Route as ProjetsDataMiningProjectRouteImport } from './routes/projets.data-mining-project'
+import { Route as ProjetsEventPlannerRouteImport } from './routes/projets.event-planner'
+import { Route as ProjetsGestionProjetsRouteImport } from './routes/projets.gestion-projets'
 import { Route as ProjetsOptisenseRouteImport } from './routes/projets.optisense'
 import { Route as ProjetsPipelineDonneesWebRouteImport } from './routes/projets.pipeline-donnees-web'
+import { Route as ProjetsSmartscanRouteImport } from './routes/projets.smartscan'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,6 +27,27 @@ const IndexRoute = IndexRouteImport.update({
 const ProjetsCarbonaiRoute = ProjetsCarbonaiRouteImport.update({
   id: '/projets/carbonai',
   path: '/projets/carbonai',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjetsCliniqueAppRoute = ProjetsCliniqueAppRouteImport.update({
+  id: '/projets/clinique-app',
+  path: '/projets/clinique-app',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjetsDataMiningProjectRoute =
+  ProjetsDataMiningProjectRouteImport.update({
+    id: '/projets/data-mining-project',
+    path: '/projets/data-mining-project',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ProjetsEventPlannerRoute = ProjetsEventPlannerRouteImport.update({
+  id: '/projets/event-planner',
+  path: '/projets/event-planner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjetsGestionProjetsRoute = ProjetsGestionProjetsRouteImport.update({
+  id: '/projets/gestion-projets',
+  path: '/projets/gestion-projets',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjetsOptisenseRoute = ProjetsOptisenseRouteImport.update({
@@ -35,52 +61,92 @@ const ProjetsPipelineDonneesWebRoute =
     path: '/projets/pipeline-donnees-web',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ProjetsSmartscanRoute = ProjetsSmartscanRouteImport.update({
+  id: '/projets/smartscan',
+  path: '/projets/smartscan',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/projets/carbonai': typeof ProjetsCarbonaiRoute
+  '/projets/clinique-app': typeof ProjetsCliniqueAppRoute
+  '/projets/data-mining-project': typeof ProjetsDataMiningProjectRoute
+  '/projets/event-planner': typeof ProjetsEventPlannerRoute
+  '/projets/gestion-projets': typeof ProjetsGestionProjetsRoute
   '/projets/optisense': typeof ProjetsOptisenseRoute
   '/projets/pipeline-donnees-web': typeof ProjetsPipelineDonneesWebRoute
+  '/projets/smartscan': typeof ProjetsSmartscanRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/projets/carbonai': typeof ProjetsCarbonaiRoute
+  '/projets/clinique-app': typeof ProjetsCliniqueAppRoute
+  '/projets/data-mining-project': typeof ProjetsDataMiningProjectRoute
+  '/projets/event-planner': typeof ProjetsEventPlannerRoute
+  '/projets/gestion-projets': typeof ProjetsGestionProjetsRoute
   '/projets/optisense': typeof ProjetsOptisenseRoute
   '/projets/pipeline-donnees-web': typeof ProjetsPipelineDonneesWebRoute
+  '/projets/smartscan': typeof ProjetsSmartscanRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/projets/carbonai': typeof ProjetsCarbonaiRoute
+  '/projets/clinique-app': typeof ProjetsCliniqueAppRoute
+  '/projets/data-mining-project': typeof ProjetsDataMiningProjectRoute
+  '/projets/event-planner': typeof ProjetsEventPlannerRoute
+  '/projets/gestion-projets': typeof ProjetsGestionProjetsRoute
   '/projets/optisense': typeof ProjetsOptisenseRoute
   '/projets/pipeline-donnees-web': typeof ProjetsPipelineDonneesWebRoute
+  '/projets/smartscan': typeof ProjetsSmartscanRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/projets/carbonai'
+    | '/projets/clinique-app'
+    | '/projets/data-mining-project'
+    | '/projets/event-planner'
+    | '/projets/gestion-projets'
     | '/projets/optisense'
     | '/projets/pipeline-donnees-web'
+    | '/projets/smartscan'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/projets/carbonai'
+    | '/projets/clinique-app'
+    | '/projets/data-mining-project'
+    | '/projets/event-planner'
+    | '/projets/gestion-projets'
     | '/projets/optisense'
     | '/projets/pipeline-donnees-web'
+    | '/projets/smartscan'
   id:
     | '__root__'
     | '/'
     | '/projets/carbonai'
+    | '/projets/clinique-app'
+    | '/projets/data-mining-project'
+    | '/projets/event-planner'
+    | '/projets/gestion-projets'
     | '/projets/optisense'
     | '/projets/pipeline-donnees-web'
+    | '/projets/smartscan'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ProjetsCarbonaiRoute: typeof ProjetsCarbonaiRoute
+  ProjetsCliniqueAppRoute: typeof ProjetsCliniqueAppRoute
+  ProjetsDataMiningProjectRoute: typeof ProjetsDataMiningProjectRoute
+  ProjetsEventPlannerRoute: typeof ProjetsEventPlannerRoute
+  ProjetsGestionProjetsRoute: typeof ProjetsGestionProjetsRoute
   ProjetsOptisenseRoute: typeof ProjetsOptisenseRoute
   ProjetsPipelineDonneesWebRoute: typeof ProjetsPipelineDonneesWebRoute
+  ProjetsSmartscanRoute: typeof ProjetsSmartscanRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +165,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjetsCarbonaiRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projets/clinique-app': {
+      id: '/projets/clinique-app'
+      path: '/projets/clinique-app'
+      fullPath: '/projets/clinique-app'
+      preLoaderRoute: typeof ProjetsCliniqueAppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projets/data-mining-project': {
+      id: '/projets/data-mining-project'
+      path: '/projets/data-mining-project'
+      fullPath: '/projets/data-mining-project'
+      preLoaderRoute: typeof ProjetsDataMiningProjectRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projets/event-planner': {
+      id: '/projets/event-planner'
+      path: '/projets/event-planner'
+      fullPath: '/projets/event-planner'
+      preLoaderRoute: typeof ProjetsEventPlannerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projets/gestion-projets': {
+      id: '/projets/gestion-projets'
+      path: '/projets/gestion-projets'
+      fullPath: '/projets/gestion-projets'
+      preLoaderRoute: typeof ProjetsGestionProjetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projets/optisense': {
       id: '/projets/optisense'
       path: '/projets/optisense'
@@ -113,14 +207,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjetsPipelineDonneesWebRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projets/smartscan': {
+      id: '/projets/smartscan'
+      path: '/projets/smartscan'
+      fullPath: '/projets/smartscan'
+      preLoaderRoute: typeof ProjetsSmartscanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ProjetsCarbonaiRoute: ProjetsCarbonaiRoute,
+  ProjetsCliniqueAppRoute: ProjetsCliniqueAppRoute,
+  ProjetsDataMiningProjectRoute: ProjetsDataMiningProjectRoute,
+  ProjetsEventPlannerRoute: ProjetsEventPlannerRoute,
+  ProjetsGestionProjetsRoute: ProjetsGestionProjetsRoute,
   ProjetsOptisenseRoute: ProjetsOptisenseRoute,
   ProjetsPipelineDonneesWebRoute: ProjetsPipelineDonneesWebRoute,
+  ProjetsSmartscanRoute: ProjetsSmartscanRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

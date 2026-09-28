@@ -1,12 +1,22 @@
-import { useState } from "react";
-import { Award, Building2, Calendar, GraduationCap, MapPin, Sparkles, Users } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+  Award,
+  Braces,
+  Building2,
+  Calendar,
+  Code2,
+  Container,
+  Cpu,
+  Database,
+  GraduationCap,
+  FolderKanban,
+  MapPin,
+  ScanLine,
+  Server,
+  Sparkles,
+  ChartNoAxesCombined,
+  Users,
+} from "lucide-react";
 import { Reveal, SectionTitle } from "./Reveal";
 import {
   certifications,
@@ -18,7 +28,6 @@ import {
   profil,
   projets,
   vieAssociative,
-  type Projet,
 } from "@/data/portfolio";
 
 function Tag({ children }: { children: React.ReactNode }) {
@@ -83,7 +92,9 @@ export function Experiences() {
               {exp.sousTitre ? (
                 <p className="mt-1 text-sm font-medium text-cyan">{exp.sousTitre}</p>
               ) : null}
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{exp.description}</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                {exp.description}
+              </p>
               <div className="mt-5 flex flex-wrap gap-2">
                 {exp.technologies.map((t) => (
                   <Tag key={t}>{t}</Tag>
@@ -98,8 +109,6 @@ export function Experiences() {
 }
 
 export function Projets() {
-  const [projetActif, setProjetActif] = useState<Projet | null>(null);
-
   return (
     <section id="projets" className="relative py-24">
       <div className="absolute inset-0 -z-10 halo opacity-60" />
@@ -110,129 +119,102 @@ export function Projets() {
           sousTitre="Une sélection de projets combinant Intelligence Artificielle, IA générative, automatisation et développement logiciel."
         />
 
-        <div className="mt-14 space-y-10">
+        <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {projets.map((p, i) => (
             <Reveal as="article" key={p.id} delay={i * 80}>
-              <div className="card-hover grid overflow-hidden rounded-3xl border border-border bg-card shadow-card lg:grid-cols-2">
-                <div className={i % 2 === 1 ? "lg:order-2" : undefined}>
+              <div className="card-hover flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-card">
+                {p.image ? (
                   <img
                     src={p.image}
                     alt={p.imageAlt}
                     loading="lazy"
                     width={1280}
                     height={800}
-                    className="h-full w-full object-cover"
+                    className="h-36 w-full object-cover brightness-[1.04] saturate-[0.62] sm:h-40"
                   />
-                </div>
-                <div className="p-7 sm:p-10">
-                  <div className="flex items-center gap-3 font-mono text-xs text-primary">
-                    <span className="text-2xl font-semibold opacity-40">{p.numero}</span>
-                    <span className="uppercase tracking-[0.2em]">{p.categorie}</span>
+                ) : (
+                  <ProjetVisual id={p.id} />
+                )}
+                <div className="flex flex-1 flex-col p-5">
+                  <div className="flex items-start gap-3 font-mono text-[11px] text-primary">
+                    <span className="text-xl font-semibold opacity-40">{p.numero}</span>
+                    <span className="pt-1 uppercase tracking-[0.16em]">
+                      {p.type ? `${p.type} · ` : ""}
+                      {p.categorie}
+                    </span>
                   </div>
-                  <h3 className="mt-4 text-2xl font-semibold sm:text-3xl">{p.titre}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  <h3 className="mt-3 text-xl font-semibold">{p.titre}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                     {p.description}
                   </p>
-                  <ul className="mt-5 grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">
-                    {p.fonctionnalites.map((f) => (
+                  <ul className="mt-4 space-y-1.5 text-xs leading-relaxed text-muted-foreground">
+                    {p.fonctionnalites.slice(0, 4).map((f) => (
                       <li key={f} className="flex items-start gap-2">
                         <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-cyan" />
                         {f}
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-6 flex flex-wrap gap-2">
+                  <div className="mt-4 flex flex-wrap gap-1.5">
                     {p.technologies.map((t) => (
                       <Tag key={t}>{t}</Tag>
                     ))}
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => setProjetActif(p)}
-                    className="mt-7 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-5 py-2.5 text-sm font-semibold transition-colors hover:bg-primary/20"
-                  >
-                    Découvrir le projet
-                  </button>
+                  {p.type ? (
+                    <a
+                      href={`/projets/${p.id}`}
+                      className="mt-5 inline-flex w-fit items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-cyan"
+                    >
+                      Découvrir le projet <span aria-hidden="true">→</span>
+                    </a>
+                  ) : (
+                    <Link
+                      to={
+                        p.id === "pipeline-web"
+                          ? "/projets/pipeline-donnees-web"
+                          : `/projets/${p.id}`
+                      }
+                      className="mt-5 inline-flex w-fit items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-cyan"
+                    >
+                      Découvrir le projet <span aria-hidden="true">→</span>
+                    </Link>
+                  )}
                 </div>
               </div>
             </Reveal>
           ))}
         </div>
       </div>
-
-      <Dialog open={projetActif !== null} onOpenChange={(o) => !o && setProjetActif(null)}>
-        <DialogContent className="max-h-[88vh] overflow-y-auto sm:max-w-3xl">
-          {projetActif ? (
-            <>
-              <DialogHeader>
-                <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
-                  {projetActif.categorie}
-                </p>
-                <DialogTitle className="text-2xl">{projetActif.titre}</DialogTitle>
-                <DialogDescription>{projetActif.description}</DialogDescription>
-              </DialogHeader>
-
-              <img
-                src={projetActif.image}
-                alt={projetActif.imageAlt}
-                loading="lazy"
-                width={1280}
-                height={800}
-                className="mt-2 w-full rounded-xl border border-border object-cover"
-              />
-
-              <Bloc titre="Présentation">{projetActif.description}</Bloc>
-              <Bloc titre="Problématique">{projetActif.problematique}</Bloc>
-              <Bloc titre="Solution">{projetActif.solution}</Bloc>
-              <Bloc titre="Architecture">{projetActif.architecture}</Bloc>
-
-              <div>
-                <h4 className="font-display text-sm font-semibold">Technologies</h4>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {projetActif.technologies.map((t) => (
-                    <Tag key={t}>{t}</Tag>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h4 className="font-display text-sm font-semibold">Fonctionnalités principales</h4>
-                <ul className="mt-2 grid gap-1.5 text-sm text-muted-foreground sm:grid-cols-2">
-                  {projetActif.fonctionnalites.map((f) => (
-                    <li key={f} className="flex items-start gap-2">
-                      <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-cyan" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="font-display text-sm font-semibold">Captures d’écran</h4>
-                <div className="mt-2 grid gap-3 sm:grid-cols-2">
-                  {[1, 2].map((n) => (
-                    <div
-                      key={n}
-                      className="grid aspect-video place-items-center rounded-xl border border-dashed border-border bg-surface-elevated p-4 text-center text-xs text-muted-foreground"
-                    >
-                      Capture d’écran {n} à ajouter
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </>
-          ) : null}
-        </DialogContent>
-      </Dialog>
     </section>
   );
 }
 
-function Bloc({ titre, children }: { titre: string; children: React.ReactNode }) {
+function ProjetVisual({ id }: { id: string }) {
+  const Icon =
+    id === "smartscan"
+      ? ScanLine
+      : id === "data-mining-project"
+        ? ChartNoAxesCombined
+        : FolderKanban;
+  const libelle =
+    id === "smartscan"
+      ? "Reconnaissance mobile"
+      : id === "data-mining-project"
+        ? "Analyse de données"
+        : id === "gestion-projets"
+          ? "Gestion applicative"
+          : id === "clinique-app"
+            ? "Gestion médicale"
+            : "Événements en ligne";
+
   return (
-    <div>
-      <h4 className="font-display text-sm font-semibold">{titre}</h4>
-      <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{children}</p>
+    <div className="relative grid h-36 place-items-center overflow-hidden bg-gradient-to-br from-primary/10 via-surface-elevated to-cyan/10 text-primary sm:h-40">
+      <div className="absolute inset-x-8 top-8 h-px bg-primary/15" />
+      <div className="absolute inset-x-14 bottom-8 h-px bg-cyan/20" />
+      <div className="relative grid place-items-center gap-2 rounded-2xl border border-primary/20 bg-card/85 px-6 py-4 shadow-card">
+        <Icon className="size-7 text-primary/80" strokeWidth={1.5} aria-hidden="true" />
+        <span className="font-mono text-[11px] text-muted-foreground">{libelle}</span>
+      </div>
     </div>
   );
 }
@@ -256,8 +238,9 @@ export function Competences() {
                 {groupe.items.map((item) => (
                   <span
                     key={item}
-                    className="rounded-lg border border-border bg-surface-elevated px-3 py-1.5 text-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/60 hover:text-primary"
+                    className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface-elevated px-3 py-1.5 text-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/60 hover:bg-primary/5 hover:text-primary"
                   >
+                    <CompetenceIcon nom={item} />
                     {item}
                   </span>
                 ))}
@@ -268,6 +251,25 @@ export function Competences() {
       </div>
     </section>
   );
+}
+
+function CompetenceIcon({ nom }: { nom: string }) {
+  const Icon =
+    nom === "Docker"
+      ? Container
+      : nom === "Python" || nom === "Java" || nom === "C++" || nom === "PHP" || nom === "C#"
+        ? Code2
+        : nom === "SQL" || nom === "MySQL" || nom === "PostgreSQL" || nom === "MongoDB"
+          ? Database
+          : nom === "FastAPI" || nom === "Spring Boot" || nom === ".NET"
+            ? Server
+            : nom === "TensorFlow" || nom === "PyTorch" || nom === "Keras"
+              ? Cpu
+              : nom === "RAG" || nom === "LLMs" || nom === "Fine-tuning"
+                ? Braces
+                : Sparkles;
+
+  return <Icon className="size-3.5 text-primary/75" aria-hidden="true" />;
 }
 
 export function Formation() {
@@ -334,14 +336,6 @@ export function Certifications() {
               <h3 className="mt-4 text-base font-semibold">{c.titre}</h3>
               <p className="mt-1 text-sm text-cyan">{c.sousTitre}</p>
               <p className="mt-3 text-sm text-muted-foreground">{c.description}</p>
-              <button
-                type="button"
-                disabled
-                title="Certificat à ajouter prochainement"
-                className="mt-6 w-fit cursor-not-allowed rounded-full border border-border px-4 py-2 text-xs font-medium text-muted-foreground opacity-60"
-              >
-                Voir le certificat
-              </button>
             </div>
           </Reveal>
         ))}

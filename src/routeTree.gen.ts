@@ -10,11 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProjetsCarbonaiRouteImport } from './routes/projets.carbonai'
 import { Route as ProjetsOptisenseRouteImport } from './routes/projets.optisense'
+import { Route as ProjetsPipelineDonneesWebRouteImport } from './routes/projets.pipeline-donnees-web'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjetsCarbonaiRoute = ProjetsCarbonaiRouteImport.update({
+  id: '/projets/carbonai',
+  path: '/projets/carbonai',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjetsOptisenseRoute = ProjetsOptisenseRouteImport.update({
@@ -22,31 +29,58 @@ const ProjetsOptisenseRoute = ProjetsOptisenseRouteImport.update({
   path: '/projets/optisense',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjetsPipelineDonneesWebRoute =
+  ProjetsPipelineDonneesWebRouteImport.update({
+    id: '/projets/pipeline-donnees-web',
+    path: '/projets/pipeline-donnees-web',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/projets/carbonai': typeof ProjetsCarbonaiRoute
   '/projets/optisense': typeof ProjetsOptisenseRoute
+  '/projets/pipeline-donnees-web': typeof ProjetsPipelineDonneesWebRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/projets/carbonai': typeof ProjetsCarbonaiRoute
   '/projets/optisense': typeof ProjetsOptisenseRoute
+  '/projets/pipeline-donnees-web': typeof ProjetsPipelineDonneesWebRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/projets/carbonai': typeof ProjetsCarbonaiRoute
   '/projets/optisense': typeof ProjetsOptisenseRoute
+  '/projets/pipeline-donnees-web': typeof ProjetsPipelineDonneesWebRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/projets/optisense'
+  fullPaths:
+    | '/'
+    | '/projets/carbonai'
+    | '/projets/optisense'
+    | '/projets/pipeline-donnees-web'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/projets/optisense'
-  id: '__root__' | '/' | '/projets/optisense'
+  to:
+    | '/'
+    | '/projets/carbonai'
+    | '/projets/optisense'
+    | '/projets/pipeline-donnees-web'
+  id:
+    | '__root__'
+    | '/'
+    | '/projets/carbonai'
+    | '/projets/optisense'
+    | '/projets/pipeline-donnees-web'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ProjetsCarbonaiRoute: typeof ProjetsCarbonaiRoute
   ProjetsOptisenseRoute: typeof ProjetsOptisenseRoute
+  ProjetsPipelineDonneesWebRoute: typeof ProjetsPipelineDonneesWebRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -58,6 +92,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projets/carbonai': {
+      id: '/projets/carbonai'
+      path: '/projets/carbonai'
+      fullPath: '/projets/carbonai'
+      preLoaderRoute: typeof ProjetsCarbonaiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projets/optisense': {
       id: '/projets/optisense'
       path: '/projets/optisense'
@@ -65,12 +106,21 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjetsOptisenseRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projets/pipeline-donnees-web': {
+      id: '/projets/pipeline-donnees-web'
+      path: '/projets/pipeline-donnees-web'
+      fullPath: '/projets/pipeline-donnees-web'
+      preLoaderRoute: typeof ProjetsPipelineDonneesWebRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ProjetsCarbonaiRoute: ProjetsCarbonaiRoute,
   ProjetsOptisenseRoute: ProjetsOptisenseRoute,
+  ProjetsPipelineDonneesWebRoute: ProjetsPipelineDonneesWebRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
